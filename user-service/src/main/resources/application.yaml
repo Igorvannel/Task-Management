@@ -1,0 +1,24 @@
+server:
+  port: 5001
+
+spring:
+  application:
+    name: USER-SERVICE
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/user-service?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Turkey
+    username: igor
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
