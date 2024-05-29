@@ -11,7 +11,7 @@ spring:
           uri:
             lb://USER-SERVICE
           predicates:
-            - Path=/auth/**,/user/**,/api/user/**,/
+            - Path=/auth/**,/users/**,/api/users/**,/
 
         - id: TASK-SERVICE
           uri:
@@ -30,7 +30,7 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: "*"
+            allowedOrigins: "http://localhost:3000/"
             allowedMethods: "*"
             allowedHeaders: "*"
 
@@ -43,3 +43,16 @@ eureka:
     register-with-eureka: true
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /v3/api-docs
+        name: API Gateway Service
+      - url: /user-service/v3/api-docs
+        name: user Service
